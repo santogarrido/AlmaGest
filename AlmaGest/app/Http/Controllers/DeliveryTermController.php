@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment_terms;
+use App\Models\Delivery_term;
 use Illuminate\Http\Request;
 
-class PaymentTermsController extends Controller
+class DeliveryTermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PaymentTermsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Payment_terms $payment_terms)
+    public function show(Delivery_term $delivery_term)
     {
         //
     }
@@ -42,7 +42,7 @@ class PaymentTermsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Payment_terms $payment_terms)
+    public function edit(Delivery_term $delivery_term)
     {
         //
     }
@@ -50,7 +50,7 @@ class PaymentTermsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Payment_terms $payment_terms)
+    public function update(Request $request, Delivery_term $delivery_term)
     {
         //
     }
@@ -58,7 +58,7 @@ class PaymentTermsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Payment_terms $payment_terms)
+    public function destroy(Delivery_term $delivery_term)
     {
         //
     }
