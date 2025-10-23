@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transports;
+use App\Models\Payment_term;
 use Illuminate\Http\Request;
 
-class TransportsController extends Controller
+class PaymentTermController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TransportsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transports $transports)
+    public function show(Payment_term $payment_term)
     {
         //
     }
@@ -42,7 +42,7 @@ class TransportsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transports $transports)
+    public function edit(Payment_term $payment_term)
     {
         //
     }
@@ -50,7 +50,7 @@ class TransportsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transports $transports)
+    public function update(Request $request, Payment_term $payment_term)
     {
         //
     }
@@ -58,7 +58,7 @@ class TransportsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transports $transports)
+    public function destroy(Payment_term $payment_term)
     {
         //
     }

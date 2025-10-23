@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Delivery_terms;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 
-class DeliveryTermsController extends Controller
+class TransportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class DeliveryTermsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Delivery_terms $delivery_terms)
+    public function show(Transport $Transport)
     {
         //
     }
@@ -42,7 +42,7 @@ class DeliveryTermsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Delivery_terms $delivery_terms)
+    public function edit(Transport $Transport)
     {
         //
     }
@@ -50,7 +50,7 @@ class DeliveryTermsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Delivery_terms $delivery_terms)
+    public function update(Request $request, Transport $Transport)
     {
         //
     }
@@ -58,7 +58,7 @@ class DeliveryTermsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Delivery_terms $delivery_terms)
+    public function destroy(Transport $Transport)
     {
         //
     }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bank_entity extends Model
+class Transport extends Model
 {
-    protected $table = 'bank_entity';
+    protected $table = 'transports';
 
     protected $fillable = [
-        'id', 'name', 'ccc', 'deleted'
+        'id', 'min', 'max', 'price', 'deleted'
     ];
 }
