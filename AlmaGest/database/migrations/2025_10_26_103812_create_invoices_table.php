@@ -16,8 +16,8 @@ return new class extends Migration
             $table->integer('num');
             $table->date('issuedate');
             //FK de delivery_notes
-            $table->unsignedBigInteger('delivery_note_id')->nullable(); //nullable?
-            $table->foreign('delivery_note_id')->references('id')->on('delivery_notes'); //->onDelete();
+            $table->unsignedBigInteger('delivery_note_id');
+            $table->foreign('delivery_note_id')->references('id')->on('delivery_notes');
 
             $table->tinyInteger('deleted')->default(0);
             $table->timestamps();

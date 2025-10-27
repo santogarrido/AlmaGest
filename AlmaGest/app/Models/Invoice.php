@@ -19,8 +19,13 @@ class Invoice extends Model
         'deleted'
     ];
 
-    //Aun no está creada la tabla
+
     // public function deliveryNote(): BelongsTo{
     //     return $this->belongsTo(Delivery_note::class);
     // }
+
+    // public function invoiceLines(): HasMany{
+    //     return $this->hasMany(Invoice_line::class);
+    // }
+
 }
