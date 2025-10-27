@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('transports', function (Blueprint $table) {
             $table->id();
+            $table->integer('min', 11);
+            $table->integer('max', 11);
+            $table->integer('price', 11);
+            $table->tinyInteger('deleted');
             $table->timestamps();
         });
     }
