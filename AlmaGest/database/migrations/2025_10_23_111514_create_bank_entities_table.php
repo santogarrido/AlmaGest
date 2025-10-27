@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 30);
             $table->char('ccc', 23);
-            $table->tinyInteger('deleted');
+            $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
     }

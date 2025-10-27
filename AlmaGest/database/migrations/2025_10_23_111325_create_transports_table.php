@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('min', 11);
             $table->integer('max', 11);
             $table->integer('price', 11);
-            $table->tinyInteger('deleted');
+            $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
     }
