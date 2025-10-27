@@ -53,7 +53,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Aun no está creada la tabla
+
     //  public function company(): BelongsTo{
     //     return $this->belongsTo(Company::class);
     // }
