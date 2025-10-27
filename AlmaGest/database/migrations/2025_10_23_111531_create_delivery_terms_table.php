@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('delivery_terms', function (Blueprint $table) {
             $table->id();
             $table->string('description', 50);
-            $table->tinyInteger('deleted');
+            $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
     }
