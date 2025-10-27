@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('issuedate');
             //FK de companies
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies'); //->onDelete('');
+            $table->foreign('company_id')->references('id')->on('companies');
 
             $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
