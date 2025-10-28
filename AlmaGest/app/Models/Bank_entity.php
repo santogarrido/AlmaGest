@@ -11,7 +11,7 @@ class Bank_entity extends Model
     protected $table = 'bank_entity';
 
     protected $fillable = [
-        'id', 'name', 'ccc', 'deleted'
+        'name', 'ccc', 'deleted'
     ];
 
     public function company(): HasMany{

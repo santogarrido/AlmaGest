@@ -11,7 +11,7 @@ class Payment_term extends Model
     protected $table = 'payment_terms';
 
     protected $fillable = [
-        'id', 'description', 'deleted'
+        'description', 'deleted'
     ];
 
     public function company(): BelongsTo{
