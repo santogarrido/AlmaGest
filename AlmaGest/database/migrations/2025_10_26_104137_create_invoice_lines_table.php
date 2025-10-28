@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transports', function (Blueprint $table) {
+        Schema::create('invoice_lines', function (Blueprint $table) {
             $table->id();
-            $table->integer('min', 11);
-            $table->integer('max', 11);
-            $table->integer('price', 11);
+            $table->foreignId('invoice_id')->constrained('invoices')->onDelete('cascade');
+            $table->foreignId('delivery_lines_id')->constrained('delivery_note_lines')->onDelete('cascade');
+            $table->integer('invoice_lines_num');
+            $table->date('issue_date');
             $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transports');
+        Schema::dropIfExists('invoice_lines');
     }
 };
