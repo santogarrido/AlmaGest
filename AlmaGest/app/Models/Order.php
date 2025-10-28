@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-// use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
@@ -21,19 +21,19 @@ class Order extends Model
     ];
 
 
-    //  public function company(): BelongsTo{
-    //     return $this->belongsTo(Company::class);
-    // }
+     public function company(): BelongsTo{
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 
 
-    // public function deliveryNotes(): HasMany{
-    //     return $this->hasMany(Delivery_Note::class);
-    // }
+    public function deliveryNotes(): HasMany{
+        return $this->hasMany(Delivery_Note::class, 'order_id');
+    }
 
 
-    // public function orderLines(): HasMany{
-    //     return $this->hasMany(Order_line::class);
-    // }
+    public function orderLines(): HasMany{
+        return $this->hasMany(Order_line::class, 'order_id');
+    }
 
 
 
