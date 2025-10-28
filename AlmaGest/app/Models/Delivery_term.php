@@ -15,7 +15,7 @@ class Delivery_term extends Model
     ];
 
     public function company(): BelongsTo{
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'del_term_id');
     }
 
 }
