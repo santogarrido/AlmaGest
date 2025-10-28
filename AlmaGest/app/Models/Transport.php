@@ -11,7 +11,7 @@ class Transport extends Model
     protected $table = 'transports';
 
     protected $fillable = [
-        'id', 'min', 'max', 'price', 'deleted'
+        'min', 'max', 'price', 'deleted'
     ];
 
     public function company(): HasMany{
