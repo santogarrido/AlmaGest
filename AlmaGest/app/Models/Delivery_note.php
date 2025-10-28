@@ -22,7 +22,7 @@ class Delivery_note extends Model
 
        public function invoices(): HasMany
    {
-       return $this->hasMany(Invoice::class);
+       return $this->hasMany(Invoice::class, 'delivery_note_id');
    }
 
 
@@ -34,7 +34,7 @@ class Delivery_note extends Model
 
    public function deliveryNoteLines(): HasMany
    {
-       return $this->hasMany(Delivery_note_line::class);
+       return $this->hasMany(Delivery_note_line::class, 'delivery_note_id');
    }
 
 }

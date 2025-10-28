@@ -20,14 +20,14 @@ class Order_line extends Model
     ];
 
     public function orders(){
-       return $this -> belongsTo(Order::class);
+       return $this -> belongsTo(Order::class, 'order_id');
     }
 
     public function delivery_note_line(){
-       return $this -> hasMany(Delivery_note_line::class);
+       return $this -> hasMany(Delivery_note_line::class, 'order_line_id');
     }
 
     public function contain_art_orderline(){
-       return $this -> hasMany(contain_art_orderline::class);
+       return $this -> hasMany(contain_art_orderline::class, 'order_line_id');
     }
 }

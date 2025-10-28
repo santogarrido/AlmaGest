@@ -25,14 +25,14 @@ class Product extends Model
     ];
 
     public function company(){
-       return $this -> belongsTo(Company::class);
+       return $this -> belongsTo(Company::class, 'company_id');
     }
 
     public function article(){
-       return $this -> belongsTo(Article::class);
+       return $this -> belongsTo(Article::class, 'article_id');
     }
 
     public function family(){
-       return $this -> belongsTo(family::class);
+       return $this -> belongsTo(family::class, 'family_id');
     }
 }

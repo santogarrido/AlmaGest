@@ -30,12 +30,12 @@ class Company extends Model
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'company_id');
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'company_id');
     }
 
     public function deliveryTerm(): BelongsTo
@@ -65,7 +65,7 @@ class Company extends Model
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'company_id');
     }
 
 
