@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('families', function (Blueprint $table) {
             $table->id();
-            $table->integer('num');
-            $table->date('issuedate');
-            //FK de delivery_notes
-            $table->unsignedBigInteger('delivery_note_id');
-            $table->foreign('delivery_note_id')->references('id')->on('delivery_notes');
-
+            $table->string('name',50);
+            $table->decimal('profit_margin',10,0);
             $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('families');
     }
 };
