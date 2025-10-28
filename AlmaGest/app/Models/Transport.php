@@ -15,7 +15,7 @@ class Transport extends Model
     ];
 
     public function company(): HasMany{
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Company::class, 'transport_id');
     }
 
 }

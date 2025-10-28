@@ -15,7 +15,7 @@ class Bank_entity extends Model
     ];
 
     public function company(): HasMany{
-        return $this -> hasMany(Company::class);
+        return $this -> hasMany(Company::class, 'bank_entity_id');
     }
 
 }
