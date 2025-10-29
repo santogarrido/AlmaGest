@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use Faker\Guesser\Name;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bank_entity>
@@ -17,7 +19,8 @@ class BankEntityFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'=> fake()->Name(),
+            'ccc' => Str::random(23),
         ];
     }
 }

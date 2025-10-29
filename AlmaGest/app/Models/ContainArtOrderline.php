@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Contain_art_orderline extends Model
+class ContainArtOrderline extends Model
 {
     use HasFactory;
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order_line extends Model
+class OrderLine extends Model
 {
     use HasFactory;
 
@@ -24,10 +24,10 @@ class Order_line extends Model
     }
 
     public function delivery_note_line(){
-       return $this -> hasMany(Delivery_note_line::class, 'order_line_id');
+       return $this -> hasMany(DeliveryNoteLine::class, 'order_line_id');
     }
 
     public function contain_art_orderline(){
-       return $this -> hasMany(contain_art_orderline::class, 'order_line_id');
+       return $this -> hasMany(ContainArtOrderline::class, 'order_line_id');
     }
 }
