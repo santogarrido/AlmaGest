@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contain_art_invline extends Model
+class ContainArtInvline extends Model
 {
     use HasFactory;
 
@@ -17,10 +17,10 @@ class Contain_art_invline extends Model
     ];
 
     public function Invoice_line(){
-        return $this->belongsTo(Invoice_line::class, 'invoice_line_id');
+        return $this->belongsTo(InvoiceLine::class, 'invoice_line_id');
     }
 
     public function Article(){
-        return $this->belongsTo(Contain_art_delivline::class, 'article_id');
+        return $this->belongsTo(ContainArtDelivline::class, 'article_id');
     }
 }

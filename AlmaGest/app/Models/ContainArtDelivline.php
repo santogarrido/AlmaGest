@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Contain_art_delivline extends Model
+class ContainArtDelivline extends Model
 {
     use HasFactory;
 
@@ -19,7 +19,7 @@ class Contain_art_delivline extends Model
     ];
 
     public function Invoice_line(){
-        return $this->belongsTo(Delivery_note_line::class, 'delivery_lines_id');
+        return $this->belongsTo(DeliveryNoteLine::class, 'delivery_lines_id');
     }
 
     public function Article(){

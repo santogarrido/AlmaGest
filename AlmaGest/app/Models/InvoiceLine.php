@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Invoice_line extends Model
+class InvoiceLine extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -26,10 +26,10 @@ class Invoice_line extends Model
     }
 
     public function Delivery_note_line(){
-        return $this->belongsTo(Delivery_note_line::class, 'delivery_lines_id');
+        return $this->belongsTo(DeliveryNoteLine::class, 'delivery_lines_id');
     }
 
     public function Contain_art_invline(){
-        return $this->hasMany(Contain_art_invline::class, 'invoice_line_id');
+        return $this->hasMany(ContainArtInvline::class, 'invoice_line_id');
     }
 }
