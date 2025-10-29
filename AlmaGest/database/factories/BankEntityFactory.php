@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bank_entity>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankEntity>
  */
 class BankEntityFactory extends Factory
 {

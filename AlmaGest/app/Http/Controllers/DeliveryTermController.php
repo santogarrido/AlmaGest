@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Delivery_term;
+use App\Models\DeliveryTerm;
 use Illuminate\Http\Request;
 
 class DeliveryTermController extends Controller
@@ -34,7 +34,7 @@ class DeliveryTermController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Delivery_term $delivery_term)
+    public function show(DeliveryTerm $delivery_term)
     {
         //
     }
@@ -42,7 +42,7 @@ class DeliveryTermController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Delivery_term $delivery_term)
+    public function edit(DeliveryTerm $delivery_term)
     {
         //
     }
@@ -50,7 +50,7 @@ class DeliveryTermController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Delivery_term $delivery_term)
+    public function update(Request $request, DeliveryTerm $delivery_term)
     {
         //
     }
@@ -58,7 +58,7 @@ class DeliveryTermController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Delivery_term $delivery_term)
+    public function destroy(DeliveryTerm $delivery_term)
     {
         //
     }

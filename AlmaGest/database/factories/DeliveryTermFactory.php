@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Delivery_term>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DeliveryTerm>
  */
 class DeliveryTermFactory extends Factory
 {
@@ -17,7 +17,7 @@ class DeliveryTermFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'description'=> fake()->sentence()
         ];
     }
 }

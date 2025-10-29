@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Delivery_term extends Model
+class DeliveryTerm extends Model
 {
+
+    use HasFactory;
     protected $table = 'delivery_terms';
 
     protected $fillable = [

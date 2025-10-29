@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Delivery_note extends Model
+class DeliveryNote extends Model
 {
     use HasFactory;
 
@@ -34,7 +34,7 @@ class Delivery_note extends Model
 
    public function deliveryNoteLines(): HasMany
    {
-       return $this->hasMany(Delivery_note_line::class, 'delivery_note_id');
+       return $this->hasMany(DeliveryNoteLine::class, 'delivery_note_id');
    }
 
 }

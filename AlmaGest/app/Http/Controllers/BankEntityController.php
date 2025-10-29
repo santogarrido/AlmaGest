@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bank_entity;
+use App\Models\BankEntity;
 use Illuminate\Http\Request;
 
 class BankEntityController extends Controller
@@ -34,7 +34,7 @@ class BankEntityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Bank_entity $bank_entity)
+    public function show(BankEntity $bank_entity)
     {
         //
     }
@@ -42,7 +42,7 @@ class BankEntityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bank_entity $bank_entity)
+    public function edit(BankEntity $bank_entity)
     {
         //
     }
@@ -50,7 +50,7 @@ class BankEntityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Bank_entity $bank_entity)
+    public function update(Request $request, BankEntity $bank_entity)
     {
         //
     }
@@ -58,7 +58,7 @@ class BankEntityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Bank_entity $bank_entity)
+    public function destroy(BankEntity $bank_entity)
     {
         //
     }
