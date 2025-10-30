@@ -11,7 +11,7 @@ class BankEntity extends Model
 
     use HasFactory;
 
-    protected $table = 'bank_entity';
+    protected $table = 'bank_entities';
 
     protected $fillable = [
         'name', 'ccc', 'deleted'
