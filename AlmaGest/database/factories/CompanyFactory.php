@@ -22,7 +22,7 @@ class CompanyFactory extends Factory
         'city'=>fake()->city(),
         'cif'=>strtoupper(fake()->bothify('?########')),
         'email'=>fake()->unique()->companyEmail(),
-        'phone'=>fake()->phoneNumber(),
+        'phone'=>fake()->numerify('#########'),
         'del_term_id'=>\App\Models\DeliveryTerm::all()->random()->id,
         'transport_id'=>\App\Models\Transport::all()->random()->id,
         'payment_term_id'=>\App\Models\PaymentTerm::all()->random()->id,

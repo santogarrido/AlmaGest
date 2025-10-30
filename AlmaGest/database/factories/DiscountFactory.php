@@ -18,7 +18,7 @@ class DiscountFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'discount'=> fake()->randomNumber(11)
+            'discount'=> fake()->numberBetween(0, 10000)
         ];
     }
 }

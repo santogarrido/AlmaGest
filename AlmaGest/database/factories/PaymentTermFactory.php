@@ -17,7 +17,7 @@ class PaymentTermFactory extends Factory
     public function definition(): array
     {
         return [
-            'description'=> fake()->sentence()
+            'description'=> fake()->text(50)
         ];
     }
 }
