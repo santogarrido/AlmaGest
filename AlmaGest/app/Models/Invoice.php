@@ -22,11 +22,11 @@ class Invoice extends Model
 
 
     public function deliveryNote(): BelongsTo{
-        return $this->belongsTo(Delivery_note::class, 'delivery_note_id');
+        return $this->belongsTo(DeliveryNote::class, 'delivery_note_id');
     }
 
     public function invoiceLines(): HasMany{
-        return $this->hasMany(Invoice_line::class, 'invoice_id');
+        return $this->hasMany(InvoiceLine::class, 'invoice_id');
     }
 
 }
