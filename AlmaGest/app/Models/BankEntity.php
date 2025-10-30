@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BankEntity extends Model
 {
+
+    use HasFactory;
+
     protected $table = 'bank_entity';
 
     protected $fillable = [

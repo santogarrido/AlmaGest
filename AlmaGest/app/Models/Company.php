@@ -40,7 +40,7 @@ class Company extends Model
 
     public function deliveryTerm(): BelongsTo
     {
-        return $this->belongsTo(Delivery_term::class, 'del_term_id');
+        return $this->belongsTo(DeliveryTerm::class, 'del_term_id');
     }
 
     public function transport(): BelongsTo
@@ -50,12 +50,12 @@ class Company extends Model
 
     public function payment_term(): BelongsTo
     {
-        return $this->belongsTo(Payment_term::class, 'payment_term_id');
+        return $this->belongsTo(PaymentTerm::class, 'payment_term_id');
     }
 
     public function bank_entity(): BelongsTo
     {
-        return $this->belongsTo(Bank_entity::class, 'bank_entity_id');
+        return $this->belongsTo(BankEntity::class, 'bank_entity_id');
     }
 
     public function discount(): BelongsTo

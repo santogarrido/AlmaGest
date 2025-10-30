@@ -20,7 +20,7 @@ class BankEntityFactory extends Factory
     {
         return [
             'name'=> fake()->Name(),
-            'ccc' => Str::random(23),
+            'ccc' => Str::random(23)
         ];
     }
 }
