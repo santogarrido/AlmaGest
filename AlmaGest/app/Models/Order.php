@@ -27,12 +27,12 @@ class Order extends Model
 
 
     public function deliveryNotes(): HasMany{
-        return $this->hasMany(Delivery_Note::class, 'order_id');
+        return $this->hasMany(DeliveryNote::class, 'order_id');
     }
 
 
     public function orderLines(): HasMany{
-        return $this->hasMany(Order_line::class, 'order_id');
+        return $this->hasMany(OrderLine::class, 'order_id');
     }
 
 

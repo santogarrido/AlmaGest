@@ -33,6 +33,6 @@ class Product extends Model
     }
 
     public function family(){
-       return $this -> belongsTo(family::class, 'family_id');
+       return $this -> belongsTo(Family::class, 'family_id');
     }
 }

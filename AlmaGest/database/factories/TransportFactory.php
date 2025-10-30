@@ -16,8 +16,12 @@ class TransportFactory extends Factory
      */
     public function definition(): array
     {
+
+        $min = fake()->numberBetween(1, 100);
         return [
-            //
+            'min'=> $min,
+            'max'=> fake()->numberBetween($min, 10000),
+            'price'=>fake()->numberBetween(0, 10000)
         ];
     }
 }

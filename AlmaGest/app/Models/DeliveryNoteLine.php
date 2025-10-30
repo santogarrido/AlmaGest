@@ -22,7 +22,7 @@ class DeliveryNoteLine extends Model
     ];
 
     public function delivery_note(){
-       return $this -> belongsTo(Delivery_note::class, 'delivery_note_id');
+       return $this -> belongsTo(DeliveryNote::class, 'delivery_note_id');
     }
 
     public function order_line(){
