@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Transport extends Model
 {
+
+    use HasFactory;
     protected $table = 'transports';
 
     protected $fillable = [

@@ -20,7 +20,7 @@ class Article extends Model
 
     //Article - Contain_Art_OrderLine (1-N) Relationship
     public function Contain_art_orderline()  {
-        return $this->hasMany(Contain_art_orderline::class,'order_line_id');
+        return $this->hasMany(ContainArtOrderline::class,'order_line_id');
     }
 
     public function Product()

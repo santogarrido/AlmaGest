@@ -21,6 +21,6 @@ class Family extends Model
 
     public function Product()
     {
-        return $this->hasMany(Article::class, 'family_id');
+        return $this->hasMany(Product::class, 'family_id');
     }
 }
