@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Company::factory(50)->create();
         \App\Models\User::factory(50)->create();
         \App\Models\User::factory(1)->create(['firstname' => 'Administrador', 'email' => 'admin@admin.com', 'password'=> '12345678', 'activated' => 1, 'email_confirmed' => 1]);
-
+        \App\Models\PaymentTerm::factory(50)->create();
+        \App\Models\BankEntity::factory(50)->create();
+        \App\Models\Discount::factory(50)->create();
     }
 }
