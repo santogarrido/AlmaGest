@@ -31,3 +31,7 @@ Route::resource('payment_terms', PaymentTermController::class);
 Route::resource('delivery_terms', DeliveryTermController::class);
 Route::resource('transports', TransportController::class);
 Route::resource('bank_entities', BankEntityController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
