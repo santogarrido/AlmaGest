@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('firstname', 15);
             $table->string('secondname', 50);
             $table->string('email', 40)->unique();
-            $table->string('password', 10);
+            $table->string('password');
 
             //clave foránea de companies
             $table->unsignedBigInteger('company_id');
