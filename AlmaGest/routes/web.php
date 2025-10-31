@@ -1,6 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BankEntityController;
+use App\Http\Controllers\DeliveryTermController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentTermController;
+use App\Http\Controllers\TransportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+Route::resource('users', UserController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('invoices', InvoiceController::class);
+Route::resource('payment_terms', PaymentTermController::class);
+Route::resource('delivery_terms', DeliveryTermController::class);
+Route::resource('transports', TransportController::class);
+Route::resource('bank_entities', BankEntityController::class);
