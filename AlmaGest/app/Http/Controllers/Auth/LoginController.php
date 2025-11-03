@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+
 
 
 class LoginController extends Controller
@@ -68,7 +67,11 @@ class LoginController extends Controller
             ]);
         }
 
-        return redirect()->intended($this->redirectPath());
+        if($user->type === 'A'){
+            return redirect('/admin');
+        }
+
+        return redirect('/home');
 
     }
 
