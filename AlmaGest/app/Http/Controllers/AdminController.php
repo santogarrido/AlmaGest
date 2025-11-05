@@ -3,16 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-      //
+        $users = \App\Models\User::where('email_confirmed', 1)->get();
+        return view('admin.index', compact('users'));
+    }
+
+    public function activate($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+
+        if ($user->email_confirmed == 1) {
+            $user->activated = 1;
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Usuario activado correctamente.');
+    }
+
+    public function desactivate($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        $user->activated = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Usuario desactivado correctamente.');
+    }
+
+    public function delete($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        $user->deleted = 1;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Usuario eliminado correctamente.');
     }
 
 
@@ -45,7 +75,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = \App\Models\User::findOrFail($id);
+        return view('admin.edit', compact('user'));
     }
 
     /**
@@ -53,10 +84,6 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (auth()->user()->type !== 'A') {
-            return redirect('/')->with('error', 'Acceso no autorizado.');
-        }
-
         $user = \App\Models\User::findOrFail($id);
 
         $request->validate([
