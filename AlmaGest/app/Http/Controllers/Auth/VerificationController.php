@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Verified;
+use Auth;
 
 class VerificationController extends Controller
 {
@@ -27,7 +28,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -45,15 +46,35 @@ class VerificationController extends Controller
     {
         $user = $request->user();
 
-        // Solo si no está verificado
+        if ($user->hasVerifiedEmail()) {
+        return redirect($this->redirectPath());
+        }
+
+        // if ($user->markEmailAsVerified()) {
+        //     $user->email_confirmed = 1;
+        //     $user->save();
+
+        // }
+
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
             $user->email_confirmed = 1;
             $user->save();
-
-            event(new Verified($user));
         }
 
-        return redirect($this->redirectPath())->with('verified', true);
+        Auth::logout();
+        return redirect('/login')->with('success', 'Your email has been verified.');
     }
-}
+
+        // Solo si no está verificado
+        // if (!$user->hasVerifiedEmail()) {
+        //     $user->markEmailAsVerified();
+        //     $user->email_confirmed = 1;
+        //     $user->save();
+
+        //     event(new Verified($user));
+        // }
+
+        // return redirect($this->redirectPath())->with('verified', true);
+    }
+
