@@ -11,7 +11,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = \App\Models\User::where('email_confirmed', 1)->get();
+        $users = \App\Models\User::where('email_confirmed', 1)
+        ->where('deleted', 0)
+        ->get();
         return view('admin.index', compact('users'));
     }
 

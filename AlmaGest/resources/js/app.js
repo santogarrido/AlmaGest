@@ -37,3 +37,7 @@ app.component('example-component', ExampleComponent);
  */
 
 app.mount('#app');
+
+
+// Import admin scss style
+import '../sass/admin.scss';
