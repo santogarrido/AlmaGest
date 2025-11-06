@@ -45,7 +45,7 @@
                             @endif
 
                             {{-- BOTÓN ELIMINAR (siempre visible) --}}
-                            <form action="{{ route('admin.user.delete', $user->id) }}" method="POST" class="d-inline">
+                            <form action="{{ route('admin.user.delete', $user->id) }}" method="POST" class="d-inline delete-form">
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     Delete
@@ -65,4 +65,31 @@
         </tbody>
     </table>
 </div>
+
+{{-- Script de confirmación --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form');
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Delete user?',
+                    text: 'This action can not be undone',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Delete',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
+
 @endsection

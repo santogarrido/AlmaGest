@@ -41,3 +41,7 @@ app.mount('#app');
 
 // Import admin scss style
 import '../sass/admin.scss';
+
+// Import sweetAler2
+import Swal from 'sweetalert2';
+window.Swal = Swal;
