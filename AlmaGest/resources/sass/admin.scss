@@ -15,6 +15,12 @@ body {
 .table {
 	border-radius: 10px;
 	overflow: hidden;
+    border: 2px solid;
+
+    th, td{
+        border: 2px solid;
+    }
+
 }
 
 .table td.actions-cell {

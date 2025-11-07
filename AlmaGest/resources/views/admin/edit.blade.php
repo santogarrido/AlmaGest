@@ -16,14 +16,27 @@
 
     <form action="{{ route('admin.user.update', $user->id) }}" method="POST" class="card p-4 shadow-sm border-0 form-box">
         @csrf
-        <div class="mb-3">
-            <label for="firstname" class="form-label">Name</label>
+        <div class="form-group">
             <input type="text" id="firstname" name="firstname" class="form-control" value="{{ old('firstname', $user->firstname) }}" required>
+            <label for="firstname">{{ __('First Name') }}</label>
         </div>
 
-        <div class="mb-3">
-            <label for="secondname" class="form-label">Second Name</label>
+        <div class="form-group">
             <input type="text" id="secondname" name="secondname" class="form-control" value="{{ old('secondname', $user->secondname) }}">
+            <label for="secondname">{{ __('Second Name') }}</label>
+        </div>
+
+        <div class="form-group">
+            <select id="company_id" name="company_id" required>
+                <option value="{{ old('company', $user->company->name) }}" disabled selected></option>
+                @foreach(\App\Models\Company::all() as $company)
+                    <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                            {{ $company->name }}
+                        </option>
+                    @endforeach
+            </select>
+                <label for="company_id">{{ __('Company') }}</label>
+                @error('company_id') <p class="error">{{ $message }}</p> @enderror
         </div>
 
         <div class="d-flex justify-content-between">
