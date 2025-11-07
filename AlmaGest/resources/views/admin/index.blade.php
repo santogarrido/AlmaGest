@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container mt-5" style="background-color: #007BFF; color: white; border-radius: 10px; padding: 20px;">
+<div class="container mt-5">
     <h1 class="mb-4" style="color: white;">Administration Panel</h1>
 
     @if(session('success'))
@@ -14,6 +14,9 @@
         <thead class="table-light">
             <tr>
                 <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Company</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,7 +24,10 @@
             @foreach($users as $user)
                 @if ($user->type != 'A')
                     <tr>
-                    <td>{{ $user->firstname }} {{ $user->secondname  }}</td>
+                    <td>{{ $user->firstname }}</td>
+                    <td> {{ $user->secondname  }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->company->name }}</td>
                     <td class=""actions-cell>
                         <div class="d-flex gap-2 justify-content-center flex-wrap">
                             {{-- BOTÓN ACTIVAR (solo si tiene el email confirmado y está desactivado) --}}

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BankEntityController;
 use App\Http\Controllers\DeliveryTermController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTermController;
@@ -44,6 +45,14 @@ Route::get('/admin', function(){
         return app(AdminController::class)->index();
     }
     return redirect('/')->with('error', 'Acceso no autorizado');
+})->middleware('auth');
+
+Route::get('/home', function(){
+    if(Auth::check() && Auth::user()->type === 'A'){
+        return app(AdminController::class)->index();
+    } else{
+        return app(HomeController::class)->index();
+    }
 })->middleware('auth');
 
 
