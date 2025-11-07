@@ -42,7 +42,7 @@
 
                             {{-- BOTÓN DESACTIVAR (solo si está activado) --}}
                             @if($user->activated == 1)
-                                <form action="{{ route('admin.user.deactivate', $user->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.user.desactivate', $user->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     <button type="submit" class="btn btn-warning btn-sm">
                                         Desactivate

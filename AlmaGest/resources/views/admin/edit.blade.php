@@ -28,15 +28,18 @@
 
         <div class="form-group">
             <select id="company_id" name="company_id" required>
-                <option value="{{ old('company', $user->company->name) }}" disabled selected></option>
                 @foreach(\App\Models\Company::all() as $company)
-                    <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
-                            {{ $company->name }}
-                        </option>
-                    @endforeach
+                    <option 
+                        value="{{ $company->id }}"
+                        {{ old('company_id', $user->company_id) == $company->id ? 'selected' : '' }}>
+                        {{ $company->name }}
+                    </option>
+                @endforeach
             </select>
-                <label for="company_id">{{ __('Company') }}</label>
-                @error('company_id') <p class="error">{{ $message }}</p> @enderror
+            <label for="company_id">{{ __('Company') }}</label>
+            @error('company_id') 
+                <p class="error">{{ $message }}</p> 
+            @enderror
         </div>
 
         <div class="d-flex justify-content-between">

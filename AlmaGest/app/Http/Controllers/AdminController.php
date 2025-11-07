@@ -26,7 +26,7 @@ class AdminController extends Controller
             $user->save();
         }
 
-        return redirect()->back()->with('success', 'Usuario activado correctamente.');
+        return redirect()->back()->with('success', 'User activated.');
     }
 
     public function desactivate($id)
@@ -35,7 +35,7 @@ class AdminController extends Controller
         $user->activated = 0;
         $user->save();
 
-        return redirect()->back()->with('success', 'Usuario desactivado correctamente.');
+        return redirect()->back()->with('success', 'User desactivated.');
     }
 
     public function delete($id)
@@ -44,7 +44,7 @@ class AdminController extends Controller
         $user->deleted = 1;
         $user->save();
 
-        return redirect()->back()->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->back()->with('success', 'User deletetion was successful.');
     }
 
 
@@ -89,15 +89,17 @@ class AdminController extends Controller
         $user = \App\Models\User::findOrFail($id);
 
         $request->validate([
-            'firstname' => 'required|string|max:255',
-            'secondname' => 'nullable|string|max:255',
+            'firstname' => 'required|string|max:15',
+            'secondname' => 'nullable|string|max:50',
+            'company_id'
         ]);
 
         $user->firstname = $request->firstname;
         $user->secondname = $request->secondname;
+        $user->company_id = $request->company_id;
         $user->save();
 
-        return redirect()->route('admin.index')->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('admin.index')->with('success', 'User updated.');
     }
 
     /**
