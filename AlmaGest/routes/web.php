@@ -64,9 +64,9 @@ Route::post('/admin/user/{id}/activate', [AdminController::class, 'activate'])
     ->middleware('auth')
     ->name('admin.user.activate');
 
-Route::post('/admin/user/{id}/deactivate', [AdminController::class, 'deactivate'])
+Route::post('/admin/user/{id}/desactivate', [AdminController::class, 'desactivate'])
     ->middleware('auth')
-    ->name('admin.user.deactivate');
+    ->name('admin.user.desactivate');
 
 Route::post('/admin/user/{id}/delete', [AdminController::class, 'delete'])
     ->middleware('auth')
