@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Verified;
@@ -37,44 +38,32 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
-    public function verify(Request $request)
+    public function verify(Request $request, $id)
     {
-        $user = $request->user();
+        // $user = $request->user();
+        $user = User::findOrFail($id);
 
         if ($user->hasVerifiedEmail()) {
-        return redirect($this->redirectPath());
+        return redirect($this->redirectPath())->with('warning', 'Your email was already verified.');
         }
-
-        // if ($user->markEmailAsVerified()) {
-        //     $user->email_confirmed = 1;
-        //     $user->save();
-
-        // }
 
         if (!$user->hasVerifiedEmail()) {
             $user->markEmailAsVerified();
             $user->email_confirmed = 1;
             $user->save();
+
+            event(new Verified($user));
         }
 
-        Auth::logout();
+        // return redirect($this->redirectPath())->with('verified', true);
+
         return redirect('/login')->with('success', 'Your email has been verified.');
     }
 
-        // Solo si no está verificado
-        // if (!$user->hasVerifiedEmail()) {
-        //     $user->markEmailAsVerified();
-        //     $user->email_confirmed = 1;
-        //     $user->save();
-
-        //     event(new Verified($user));
-        // }
-
-        // return redirect($this->redirectPath())->with('verified', true);
     }
 
