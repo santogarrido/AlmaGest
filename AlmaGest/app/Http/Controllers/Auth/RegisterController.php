@@ -80,8 +80,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    // protected function registered(Request $request, $user){
-    //     Auth::logout();
-    //     return redirect()->route('login');
-    // }
+    protected function registered(Request $request, $user){
+        Auth::logout();
+        return redirect()->route('login')->with('info','Check your email to verify your account');
+    }
 }
