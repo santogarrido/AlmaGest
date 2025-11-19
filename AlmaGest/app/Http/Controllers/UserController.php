@@ -53,22 +53,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (auth()->user()->type !== 'A') {
-            return redirect('/')->with('error', 'Acceso no autorizado.');
-        }
-
-        $user = \App\Models\User::findOrFail($id);
-
-        $request->validate([
-            'firstname' => 'required|string|max:255',
-            'secondname' => 'nullable|string|max:255',
-        ]);
-
-        $user->firstname = $request->firstname;
-        $user->secondname = $request->secondname;
-        $user->save();
-
-        return redirect()->route('admin.index')->with('success', 'Usuario actualizado correctamente.');
+        //
     }
 
     /**
