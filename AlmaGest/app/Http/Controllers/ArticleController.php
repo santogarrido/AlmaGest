@@ -31,7 +31,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return Article::create([
+        Article::create([
             'name' => $request->name,
             'description' => $request->description,
             'price_min' => $request->price_min,
@@ -40,7 +40,11 @@ class ArticleController extends Controller
             'weight' => $request->weight,
             'size' => $request->size,
             'family_id' => $request->family_id,
+
         ]);
+
+        return redirect()->route('admin.articles.index')
+            ->with('success', 'Artículo creado correctamente.');
 
     }
 

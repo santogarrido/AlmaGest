@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('price_min',10,0);
             $table->decimal('price_max',10,0);
             $table->string('color_name',20)->nullable();
-            $table->decimal('weight',10,0);
-            $table->string('size',10)->nullable();
+            $table->decimal('weight',10,2);
+            $table->string('size',20)->nullable();
             $table->foreignId('family_id')->constrained('families')->onDelete('cascade');
             $table->tinyInteger('deleted')->default(0);
             $table->timestamps();
