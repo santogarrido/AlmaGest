@@ -24,7 +24,7 @@ class ArticleFactory extends Factory
             'price_max' => fake()->numberBetween(0, 9999999999),
             'color_name' => fake()->colorName(),
             'weight' => fake()->numberBetween(0, 9999999999),
-            'size' => fake()->text(10),
+            'size' => fake()->text(20),
             'family_id' => App\Models\Family::all()->random()->id,
         ];
     }
