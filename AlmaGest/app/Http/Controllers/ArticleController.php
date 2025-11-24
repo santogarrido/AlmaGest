@@ -62,7 +62,7 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::findOrFail($id);
-        return view('article.edit', compact('article'));
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -76,10 +76,10 @@ class ArticleController extends Controller
             'name' => 'required|string|max:50',
             'description'=> 'nullable|string|max:150',
             'price_min' => 'required|numeric|digits_between:1,10',
-            'price_max' => 'required|numeric|digits_between:1,10',
+            'price_max' => 'required|numeric|gt:price_min|digits_between:1,10',
             'color_name' => 'nullable|string|max:20',
-            'weight' => 'required|numeric|digits_between:1,10',
-            'size' => 'nullable|string|max:10',
+            'weight' => 'required|regex:/^\d{1,10}(\.\d{1,2})?$/',
+            'size' => 'nullable|string|max:20',
         ]);
 
         $article->name = $request->name;
@@ -92,7 +92,7 @@ class ArticleController extends Controller
         $article->family_id = $request->family_id;
         $article->save();
 
-        return redirect()->route('article.index')->with('success', 'Article updated.');
+        return redirect()->route('admin.articles.index')->with('success', 'Article updated.');
 
     }
 

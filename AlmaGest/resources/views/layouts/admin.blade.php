@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -26,12 +27,12 @@
                 <span class="navbar-brand mb-0 me-3 fs-3">{{ config('app.name', 'Laravel Admin') }}</span>
                 <!-- Botón para toggle sidebar -->
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar">
-                    ☰
+                    <i class="fa-solid fa-bars mt-1 mb-1"></i>
                 </button>
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a id="navbarDropdown" class="fa-solid fa-user text-light fs-4 me-3" href="#" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -48,7 +49,7 @@
             </div>
         </nav>
 
-        <div class="d-flex" style="margin-top: 56px;"> <!-- Ajusta margin-top al alto del navbar -->
+        <div class="d-flex" style="margin-top: 50px;"> <!-- Ajusta margin-top al alto del navbar -->
 
             <!-- Sidebar lateral -->
             <nav id="sidebar" class="bg-dark text-white vh-100 p-3 collapse" style="width: 220px;">

@@ -17,14 +17,15 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+        //por revisar aun
+        $price_min = fake()->numberBetween(0, 9999999999);
         return [
             'name' => fake()->name(),
             'description' => fake()->text(150),
-            'price_min' => fake()->numberBetween(0, 9999999999),
-            'price_max' => fake()->numberBetween(0, 9999999999),
+            'price_min' => $price_min,
+            'price_max' => fake()->numberBetween($price_min, 9999999999),
             'color_name' => fake()->colorName(),
-            'weight' => fake()->numberBetween(0, 9999999999),
-            'size' => fake()->text(20),
+            'weight' => fake()->numberBetween(0, 99999999.99),
             'family_id' => App\Models\Family::all()->random()->id,
         ];
     }

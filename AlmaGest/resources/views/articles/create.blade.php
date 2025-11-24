@@ -95,15 +95,15 @@
 
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="size_type" value="number" {{ old('size_type') == 'number' ? 'checked' : '' }}>
+                    <input type="radio" name="size_type" value="number" {{ old('size_type') == 'number' ? 'checked' : '' }} required>
                     1 número
                 </label>
                 <label>
-                    <input type="radio" name="size_type" value="simple" {{ old('size_type') == 'simple' ? 'checked' : '' }}>
+                    <input type="radio" name="size_type" value="simple" {{ old('size_type') == 'simple' ? 'checked' : '' }} required>
                     Valor simple
                 </label>
                 <label>
-                    <input type="radio" name="size_type" value="compound" {{ old('size_type') == 'compound' ? 'checked' : '' }}>
+                    <input type="radio" name="size_type" value="compound" {{ old('size_type') == 'compound' ? 'checked' : '' }} required>
                     Valor compuesto
                 </label>
             </div>
@@ -111,45 +111,61 @@
             {{-- Campos ocultos --}}
             <div id="size_number" class="size-dependent" style="display:none;">
                 <select name="size_number_value">
-                    <option value="1">nº1</option>
-                    <option value="2">nº2</option>
-                    <option value="3">nº3</option>
+                    <option value="">Select size</option>
+                    @php
+                        $sizes = ['nº1', 'nº2', 'nº3'];
+                    @endphp
+                    @foreach ($sizes as $s)
+                        <option value="{{ $s }}" {{ old('size') == $s ? 'selected' : '' }}>
+                            {{ $s }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
             <div id="size_simple" class="size-dependent" style="display:none;">
                 <select name="size_simple_value">
-                    <option value="3cm">3cm</option>
-                    <option value="5cm">5cm</option>
-                    <option value="10cm">10cm</option>
-                    <option value="20cm">20cm</option>
-                    <option value="30cm">30cm</option>
+                    <option value="">Select size</option>
+                    @php
+                        $sizes = ['3 cm', '5 cm', '10 cm', '20 cm', '30 cm'];
+                    @endphp
+                    @foreach ($sizes as $s)
+                        <option value="{{ $s }}" {{ old('size') == $s ? 'selected' : '' }}>
+                            {{ $s }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
             <div id="size_compound" class="size-dependent" style="display:none;">
                 <select name="size_compound_width">
-                    <option value="5cm">5cm</option>
-                    <option value="10cm">10cm</option>
-                    <option value="15cm">15cm</option>
-                    <option value="20cm">20cm</option>
-                    <option value="30cm">30cm</option>
-                    <option value="50cm">50cm</option>
-                    <option value="60cm">60cm</option>
+                    <option value="">Select size</option>
+                    @php
+                        $sizes = ['5 cm', '10 cm', '15 cm', '20 cm', '30 cm', '50 cm', '60 cm'];
+                    @endphp
+                    @foreach ($sizes as $s)
+                        <option value="{{ $s }}" {{ old('size') == $s ? 'selected' : '' }}>
+                            {{ $s }}
+                        </option>
+                    @endforeach
                 </select>
                 x
                 <select name="size_compound_height">
-                    <option value="0.25cm">0.25cm</option>
-                    <option value="0.5cm">0.5cm</option>
-                    <option value="1cm">1cm</option>
-                    <option value="2cm">2cm</option>
-                    <option value="5cm">5cm</option>
-                    <option value="25cm">25cm</option>
+                    <option value="">Select size</option>
+                    @php
+                        $sizes = ['0.25 cm', '0.5 cm', '1 cm', '2 cm', '5 cm', '25 cm'];
+                    @endphp
+                    @foreach ($sizes as $s)
+                        <option value="{{ $s }}" {{ old('size') == $s ? 'selected' : '' }}>
+                            {{ $s }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
             {{-- Hidden para enviar el valor combinado --}}
             <input type="hidden" name="size" id="size_hidden" value="{{ old('size') }}">
+
         </div>
 
         <script>
@@ -178,7 +194,7 @@
                 } else if (selected === 'compound') {
                     const w = dependents.compound.querySelector('select[name="size_compound_width"]').value;
                     const h = dependents.compound.querySelector('select[name="size_compound_height"]').value;
-                    value = `${w}x${h}`;
+                    value = `${w} x ${h}`;
                 }
                 hidden.value = value;
             }

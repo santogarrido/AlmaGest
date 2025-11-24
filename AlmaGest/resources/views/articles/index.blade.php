@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <h1 class="mb-4" style="color: white;">Articles Management</h1>
+    <h1 class="mb-4">Articles Management</h1>
 
     {{-- Mensaje de éxito --}}
     @if(session('success'))
@@ -13,7 +13,7 @@
 
     {{-- Botón crear --}}
     <a href="{{ route('admin.articles.create') }}" class="btn btn-primary mb-3">
-        Create Article
+        <i class="fa-solid fa-plus"></i> New Article
     </a>
 
     @if($articles->isEmpty())
@@ -25,7 +25,7 @@
     @else
 
         <table class="table table-bordered text-center align-middle">
-            <thead class="table-light">
+            <thead class="table-dark">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -55,10 +55,9 @@
                             <div class="d-flex gap-2 justify-content-center flex-wrap">
 
                                 {{-- Edit --}}
-                                <a href="{{ route('admin.articles.edit', $article->id) }}"
-                                   class="btn btn-info btn-sm">
-                                   Edit
-                                </a>
+                                <form action="{{ route('admin.articles.edit', $article->id) }}" method="GET" class="d-inline">
+                                    <button type="submit" class="btn btn-info btn-sm">Edit</button>
+                                </form>
 
                                 {{-- Delete --}}
                                 <form action="{{ route('admin.articles.delete', $article->id) }}"
@@ -81,6 +80,32 @@
     @endif
 
 </div>
+
+{{-- Script de confirmación --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form');
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Delete article?',
+                    text: 'This action can not be undone',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Delete',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
 
 
 
