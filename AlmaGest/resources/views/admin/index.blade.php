@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @vite(['resources/js/app.js'])
 
 @section('content')

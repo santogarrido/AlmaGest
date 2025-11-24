@@ -11,6 +11,7 @@ use App\Http\Controllers\TransportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +80,32 @@ Route::get('/admin/user/{id}/edit', [AdminController::class, 'edit'])
 Route::post('/admin/user/{id}/update', [AdminController::class, 'update'])
     ->middleware('auth')
     ->name('admin.user.update');
+
+
+
+Route::get('/admin/articles', [ArticleController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.articles.index');
+
+// Crear artículo
+Route::get('/admin/articles/create', [ArticleController::class, 'create'])
+    ->middleware('auth')
+    ->name('admin.articles.create');
+
+Route::post('/admin/articles/store', [ArticleController::class, 'store'])
+    ->middleware('auth')
+    ->name('admin.articles.store');
+
+// Editar artículo
+Route::get('/admin/articles/{id}/edit', [ArticleController::class, 'edit'])
+    ->middleware('auth')
+    ->name('admin.articles.edit');
+
+Route::post('/admin/articles/{id}/update', [ArticleController::class, 'update'])
+    ->middleware('auth')
+    ->name('admin.articles.update');
+
+// Eliminar artículo
+Route::post('/admin/articles/{id}/delete', [ArticleController::class, 'delete'])
+    ->middleware('auth')
+    ->name('admin.articles.delete');

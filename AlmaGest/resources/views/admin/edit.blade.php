@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container mt-5">
@@ -29,7 +29,7 @@
         <div class="form-group">
             <select id="company_id" name="company_id" required>
                 @foreach(\App\Models\Company::all() as $company)
-                    <option 
+                    <option
                         value="{{ $company->id }}"
                         {{ old('company_id', $user->company_id) == $company->id ? 'selected' : '' }}>
                         {{ $company->name }}
@@ -37,8 +37,8 @@
                 @endforeach
             </select>
             <label for="company_id">{{ __('Company') }}</label>
-            @error('company_id') 
-                <p class="error">{{ $message }}</p> 
+            @error('company_id')
+                <p class="error">{{ $message }}</p>
             @enderror
         </div>
 
