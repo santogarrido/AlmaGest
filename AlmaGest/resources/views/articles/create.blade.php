@@ -194,7 +194,10 @@
                 } else if (selected === 'compound') {
                     const w = dependents.compound.querySelector('select[name="size_compound_width"]').value;
                     const h = dependents.compound.querySelector('select[name="size_compound_height"]').value;
-                    value = `${w} x ${h}`;
+                    if(w!="" && h!=""){
+                        value = `${w} x ${h}`;
+                    }
+
                 }
                 hidden.value = value;
             }

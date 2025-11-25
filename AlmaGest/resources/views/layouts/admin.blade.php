@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel Admin') }}</title>
 
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -49,14 +51,13 @@
             </div>
         </nav>
 
-        <div class="d-flex" style="margin-top: 50px;"> <!-- Ajusta margin-top al alto del navbar -->
+        <div class="d-flex"> <!-- Ajusta margin-top al alto del navbar -->
 
             <!-- Sidebar lateral -->
             <nav id="sidebar" class="bg-dark text-white vh-100 p-3 collapse" style="width: 220px;">
                 <ul class="nav flex-column mt-4">
-                    <li class="nav-item mb-2">
-                        <a class="nav-link text-white" href="{{ route('admin.index') }}">Dashboard</a>
-                    </li>
+                    <br>
+                    <br/>
                     <li class="nav-item mb-2">
                         <a class="nav-link text-white" href="{{ route('admin.index') }}">Users</a>
                     </li>
@@ -67,7 +68,7 @@
             </nav>
 
             <!-- Contenido principal -->
-            <div class="flex-grow-1 p-4">
+            <div class="flex-grow-1 p-5" id="main-content">
                 @yield('content')
             </div>
 

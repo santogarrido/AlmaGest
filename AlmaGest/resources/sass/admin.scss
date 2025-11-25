@@ -69,3 +69,13 @@ h1 {
 	max-width: 700px;
 	margin: auto;
 }
+
+#sidebar {
+    position: sticky; /* altura del navbar */
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 900;
+}
+
+
