@@ -31,6 +31,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'description'=> 'required|string|max:150',
+            'price_min' => 'required|numeric|digits_between:1,10',
+            'price_max' => 'required|numeric|gt:price_min|digits_between:1,10',
+            'color_name' => 'required|string|max:20',
+            'weight' => 'required|regex:/^\d{1,10}(\.\d{1,2})?$/',
+            'size' => 'required|string|max:20',
+        ]);
+
         Article::create([
             'name' => $request->name,
             'description' => $request->description,
