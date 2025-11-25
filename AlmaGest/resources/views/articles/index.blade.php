@@ -45,10 +45,10 @@
                         <td>{{ $article->name }}</td>
                         <td>{{ $article->description }}</td>
                         <td>{{ $article->family->name }}</td>
-                        <td>{{ $article->price_min }}</td>
-                        <td>{{ $article->price_max }}</td>
+                        <td>{{ $article->price_min }} €</td>
+                        <td>{{ $article->price_max }} €</td>
                         <td>{{ $article->color_name }}</td>
-                        <td>{{ $article->weight }}</td>
+                        <td>{{ $article->weight }} kg</td>
                         <td>{{ $article->size }}</td>
 
                         <td>

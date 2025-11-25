@@ -45,3 +45,4 @@ import '../sass/admin.scss';
 // Import sweetAler2
 import Swal from 'sweetalert2';
 window.Swal = Swal;
+
