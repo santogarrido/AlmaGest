@@ -139,7 +139,7 @@
 
             <div id="size_compound" class="size-dependent" style="display:none;">
                 <select name="size_compound_width">
-                    <option value="">Select size</option>
+                    <option value="">Select width</option>
                     @php
                         $sizes = ['5 cm', '10 cm', '15 cm', '20 cm', '30 cm', '50 cm', '60 cm'];
                     @endphp
@@ -151,7 +151,7 @@
                 </select>
                 x
                 <select name="size_compound_height">
-                    <option value="">Select size</option>
+                    <option value="">Select height</option>
                     @php
                         $sizes = ['0.25 cm', '0.5 cm', '1 cm', '2 cm', '5 cm', '25 cm'];
                     @endphp
@@ -167,52 +167,6 @@
             <input type="hidden" name="size" id="size_hidden" value="{{ old('size') }}">
 
         </div>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const radios = document.querySelectorAll('input[name="size_type"]');
-            const dependents = {
-                number: document.getElementById('size_number'),
-                simple: document.getElementById('size_simple'),
-                compound: document.getElementById('size_compound')
-            };
-            const hidden = document.getElementById('size_hidden');
-
-            function updateSize() {
-                const selected = document.querySelector('input[name="size_type"]:checked')?.value;
-                // Mostrar/ocultar selects
-                for (let key in dependents) {
-                    dependents[key].style.display = (key === selected) ? 'inline-block' : 'none';
-                }
-
-                // Actualizar hidden
-                let value = '';
-                if (selected === 'number') {
-                    value = dependents.number.querySelector('select').value;
-                } else if (selected === 'simple') {
-                    value = dependents.simple.querySelector('select').value;
-                } else if (selected === 'compound') {
-                    const w = dependents.compound.querySelector('select[name="size_compound_width"]').value;
-                    const h = dependents.compound.querySelector('select[name="size_compound_height"]').value;
-                    if(w!="" && h!=""){
-                        value = `${w} x ${h}`;
-                    }
-
-                }
-                hidden.value = value;
-            }
-
-            // Detectar cambios en radiobuttons y selects
-            radios.forEach(r => r.addEventListener('change', updateSize));
-            Object.values(dependents).forEach(d => {
-                d.querySelectorAll('select').forEach(s => s.addEventListener('change', updateSize));
-            });
-
-            // Inicializa al cargar la página
-            updateSize();
-        });
-        </script>
-
 
         {{-- Family --}}
         <div class="form-group mt-4">
