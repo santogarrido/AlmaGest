@@ -5,6 +5,8 @@
  */
 
 import './bootstrap';
+import './article-size';
+import './delete-article';
 import { createApp } from 'vue';
 
 /**
