@@ -17,11 +17,24 @@ class UserController extends Controller
 
 
     /**
+     * Get the company of the user
+     */
+
+    public function getCompany(){
+
+        $user = Auth::user();
+        $company = $user->company;
+
+        return view('datesCompany', compact('company'));
+
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+
     }
 
     /**

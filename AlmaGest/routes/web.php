@@ -39,7 +39,7 @@ Route::resource('bank_entities', BankEntityController::class);
 Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/admin', function(){
     if(Auth::check() && Auth::user()->type === 'A'){
@@ -54,7 +54,8 @@ Route::get('/home', function(){
     } else{
         return app(HomeController::class)->index();
     }
-})->middleware('auth');
+})->middleware(['auth', 'verified'])
+->name('home');
 
 
 Route::get('/admin', [AdminController::class, 'index'])
@@ -109,3 +110,8 @@ Route::post('/admin/articles/{id}/update', [ArticleController::class, 'update'])
 Route::post('/admin/articles/{id}/delete', [ArticleController::class, 'delete'])
     ->middleware('auth')
     ->name('admin.articles.delete');
+
+
+Route::get('/datesCompany', [UserController::class, 'getCompany'])
+    ->middleware('auth')
+    ->name('datesCompany');
