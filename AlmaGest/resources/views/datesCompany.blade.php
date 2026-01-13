@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="register-container">
-    <div class="register-card">
-        <h2 class="register-title">{{ __('Enterprise data') }}</h2>
+<div class="dataCompany-container">
+    <div class="dataCompany-card">
+        <h2 class="dataCompany-title">{{ __('Enterprise data') }}</h2>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -14,8 +14,6 @@
                 </ul>
             </div>
         @endif
-
-
 
         <form method="POST" action="" >
 
@@ -51,6 +49,12 @@
                 <label for="cif">CIF</label>
             </div>
 
+            {{-- Cargo Gerente --}}
+            <div class="form-group">
+                <input type="text" class="form-control" value="Gerente" readonly>
+                <label>Cargo</label>
+            </div>
+
             {{-- Email --}}
             <div class="form-group">
                 <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $company->email) }}">
@@ -65,34 +69,73 @@
 
             {{-- Delivery term --}}
             <div class="form-group">
-                <input type="number" id="del_term_id" name="del_term_id" class="form-control" value="{{ old('del_term_id', $company->del_term_id) }}">
+                    <select id="del_term_id" name="del_term_id" class="form-control">
+                        <option value="">Seleccione un plazo</option>
+                        @foreach ($deliveryTerms as $term)
+                            <option value="{{ $term->id }}"
+                                {{ old('del_term_id', $company->del_term_id) == $term->id ? 'selected' : '' }}>
+                                {{ $term->description }}
+                            </option>
+                        @endforeach
+                </select>
                 <label for="del_term_id">Delivery Term</label>
             </div>
 
             {{-- Transport --}}
             <div class="form-group">
-                <input type="number" id="transport_id" name="transport_id" class="form-control" value="{{ old('transport_id', $company->transport_id) }}">
+                <select id="transport_id" name="transport_id" class="form-control">
+                    <option value="">Seleccione portes</option>
+                    @foreach ($transports as $transport)
+                        <option value="{{ $transport->id }}"
+                            {{ old('transport_id', $company->transport_id) == $transport->id ? 'selected' : '' }}>
+                            {{ $transport->price }} €
+                        </option>
+                    @endforeach
+                </select>
                 <label for="transport_id">Transport</label>
             </div>
 
             {{-- Payment term --}}
             <div class="form-group">
-                <input type="number" id="payment_term_id" name="payment_term_id" class="form-control" value="{{ old('payment_term_id', $company->payment_term_id) }}">
+                    <select id="payment_term_id" name="payment_term_id" class="form-control">
+                        <option value="">Seleccione condición</option>
+                        @foreach ($paymentTerms as $term)
+                            <option value="{{ $term->id }}"
+                                {{ old('payment_term_id', $company->payment_term_id) == $term->id ? 'selected' : '' }}>
+                                {{ $term->description }}
+                            </option>
+                        @endforeach
+                    </select>
                 <label for="payment_term_id">Payment Term</label>
             </div>
 
             {{-- Bank entity --}}
             <div class="form-group">
-                <input type="number" id="bank_entity_id" name="bank_entity_id" class="form-control" value="{{ old('bank_entity_id', $company->bank_entity_id) }}">
+                <select id="bank_entity_id" name="bank_entity_id" class="form-control">
+                    <option value="">Seleccione entidad</option>
+                     @foreach ($bankEntities as $bank)
+                        <option value="{{ $bank->id }}"
+                            {{ old('bank_entity_id', $company->bank_entity_id) == $bank->id ? 'selected' : '' }}>
+                            {{ $bank->name }}
+                        </option>
+                    @endforeach
+                </select>
                 <label for="bank_entity_id">Bank Entity</label>
             </div>
 
             {{-- Discount --}}
             <div class="form-group">
-                <input type="number" id="discount_id" name="discount_id" class="form-control" value="{{ old('discount_id', $company->discount_id) }}">
+                <select id="discount_id" name="discount_id" class="form-control" required>
+                    <option value="">Seleccione descuento</option>
+                    @foreach ($discounts as $discount)
+                        <option value="{{ $discount->id }}"
+                            {{ old('discount_id', $company->discount_id) == $discount->id ? 'selected' : '' }}>
+                            {{ $discount->discount }} %
+                        </option>
+                    @endforeach
+                </select>
                 <label for="discount_id">Discount</label>
             </div>
-
 
             <div>
                 <div id="action-buttons" style="display: none;">
@@ -132,23 +175,27 @@
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const actionButtons = document.getElementById('action-buttons');
-    const inputs = form.querySelectorAll('input');
+    const fields = form.querySelectorAll('input, select');
 
     function checkForm() {
-        // Recorre todos los inputs y verifica si están vacíos
         let allFilled = true;
-        inputs.forEach(input => {
-            if (input.value.trim() === '') {
+
+        fields.forEach(field => {
+            if (field.value === null || field.value.toString().trim() === '') {
                 allFilled = false;
             }
         });
 
-        // Muestra u oculta los botones según
         actionButtons.style.display = allFilled ? 'block' : 'none';
     }
 
-    // Ejecutar al cargar y cada vez que cambie un input
+    // Ejecutar al cargar
     checkForm();
-    inputs.forEach(input => input.addEventListener('input', checkForm));
+
+    // Escuchar cambios en inputs y selects
+    fields.forEach(field => {
+        field.addEventListener('input', checkForm);
+        field.addEventListener('change', checkForm);
+    });
 });
 </script>
