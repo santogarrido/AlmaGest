@@ -7,6 +7,7 @@
 import './bootstrap';
 import './article-size';
 import './delete-article';
+import './dataCompany';
 import { createApp } from 'vue';
 
 /**

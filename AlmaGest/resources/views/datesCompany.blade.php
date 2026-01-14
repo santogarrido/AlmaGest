@@ -49,6 +49,13 @@
                 <label for="cif">CIF</label>
             </div>
 
+            {{-- User isContact --}}
+            <div class="form-group">
+                <input type="text" id="isContact" name="isContact" class="form-control" value="{{ old('isContact', $userIsContact) }}">
+                <label for="isContact">Persona de contacto</label>
+            </div>
+
+
             {{-- Cargo Gerente --}}
             <div class="form-group">
                 <input type="text" class="form-control" value="Gerente" readonly>
@@ -168,34 +175,3 @@
     </div>
 </div>
 @endsection
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const actionButtons = document.getElementById('action-buttons');
-    const fields = form.querySelectorAll('input, select');
-
-    function checkForm() {
-        let allFilled = true;
-
-        fields.forEach(field => {
-            if (field.value === null || field.value.toString().trim() === '') {
-                allFilled = false;
-            }
-        });
-
-        actionButtons.style.display = allFilled ? 'block' : 'none';
-    }
-
-    // Ejecutar al cargar
-    checkForm();
-
-    // Escuchar cambios en inputs y selects
-    fields.forEach(field => {
-        field.addEventListener('input', checkForm);
-        field.addEventListener('change', checkForm);
-    });
-});
-</script>
