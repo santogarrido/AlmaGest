@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="welcome-container">
     <div class="welcome-card">
         <h1 class="welcome-title">Welcome to Almagest</h1>
@@ -12,6 +13,7 @@
         <div class="welcome-buttons">
             <a class="btn-welcome" href="{{ route('datesCompany') }}">Datos empresa</a>
             <a class="btn-welcome btn-outline">Pedidos</a>
+
         </div>
     </div>
 </div>

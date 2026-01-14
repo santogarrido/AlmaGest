@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\DeliveryTerm;
+use App\Models\Transport;
+use App\Models\PaymentTerm;
+use App\Models\BankEntity;
+use App\Models\Discount;
 
 class UserController extends Controller
 {
@@ -25,7 +30,14 @@ class UserController extends Controller
         $user = Auth::user();
         $company = $user->company;
 
-        return view('datesCompany', compact('company'));
+        return view('datesCompany', [
+            'company' => $company,
+            'deliveryTerms' => DeliveryTerm::all(),
+            'transports' => Transport::all(),
+            'paymentTerms' => PaymentTerm::all(),
+            'bankEntities' => BankEntity::all(),
+            'discounts' => Discount::all(),
+        ]);
 
     }
 
