@@ -29,6 +29,12 @@ class UserController extends Controller
 
         $user = Auth::user();
         $company = $user->company;
+        $userIsContact = \App\Models\User::where('iscontact', 1)
+        ->where('company_id', $user->company)->first();
+
+        $contactName = $userIsContact
+        ? $userIsContact->firstname . ' ' . $userIsContact->secondname
+        : '';
 
         return view('datesCompany', [
             'company' => $company,
@@ -37,6 +43,7 @@ class UserController extends Controller
             'paymentTerms' => PaymentTerm::all(),
             'bankEntities' => BankEntity::all(),
             'discounts' => Discount::all(),
+            'userIsContact' => $contactName
         ]);
 
     }
