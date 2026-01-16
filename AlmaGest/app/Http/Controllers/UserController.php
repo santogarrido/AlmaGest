@@ -22,6 +22,16 @@ class UserController extends Controller
 
 
     /**
+     * Get all the users that have isContact in true
+     */
+
+    public function getIsContactUsers(){
+        $users = \App\Models\User::where('iscontact', 1)->get();
+
+        return view('formEmail', compact('users'));
+    }
+
+    /**
      * Get the company of the user
      */
 
