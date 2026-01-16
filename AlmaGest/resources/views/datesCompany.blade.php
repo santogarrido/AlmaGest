@@ -16,6 +16,7 @@
         @endif
 
         <form method="POST" action="" >
+            @csrf
 
             {{-- Codigo --}}
             <div class="form-group">
@@ -25,7 +26,7 @@
 
             {{-- Company name --}}
             <div class="form-group">
-                <input type="text" id="name" class="form-control" value="{{ old('name', $company->name) }}">
+                <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $company->name) }}">
                 <label for="name">Name</label>
             </div>
 
@@ -147,14 +148,14 @@
             <div>
                 <div id="action-buttons" style="display: none;">
                     <div>
-                        <button class="btn-register">
-                            {{ __('Descargar Ficha de la Empresa') }}
+                        <button type="submit" formaction="{{ route('pdf.company') }}" class="btn-register">
+                            Descargar Ficha de la Empresa
                         </button>
                     </div>
                     <br>
                     <div>
-                        <button class="btn-register">
-                            {{ __('Descargar Catálogo de Productos') }}
+                        <button type="submit" formaction="{{ route('pdf.catalog') }}" class="btn-register">
+                            Descargar Catálogo de Productos
                         </button>
                     </div>
                     <br>

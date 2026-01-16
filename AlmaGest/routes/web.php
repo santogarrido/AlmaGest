@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PdfController;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,3 +117,8 @@ Route::post('/admin/articles/{id}/delete', [ArticleController::class, 'delete'])
 Route::get('/datesCompany', [UserController::class, 'getCompany'])
     ->middleware('auth')
     ->name('datesCompany');
+
+    //Pdf
+
+Route::post('/pdf/company', [PdfController::class, 'company'])->name('pdf.company');
+Route::post('/pdf/catalog', [PdfController::class, 'catalog'])->name('pdf.catalog');
