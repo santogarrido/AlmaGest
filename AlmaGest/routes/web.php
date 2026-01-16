@@ -115,3 +115,7 @@ Route::post('/admin/articles/{id}/delete', [ArticleController::class, 'delete'])
 Route::get('/datesCompany', [UserController::class, 'getCompany'])
     ->middleware('auth')
     ->name('datesCompany');
+
+Route::get('/formEmail', [UserController::class, 'getIsContactUsers'])
+    ->middleware('auth')
+    ->name('formEmail');

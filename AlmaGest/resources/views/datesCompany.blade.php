@@ -159,9 +159,9 @@
                     </div>
                     <br>
                     <div>
-                        <button class="btn-register">
-                            {{ __('Enviar PDFs por Email') }}
-                        </button>
+                        <a href="{{ route('formEmail') }}" class="btn-welcome btn-register btn-back">
+                            Enviar PDFs por Email
+                        </a>
                     </div>
                 </div>
                 <br>
