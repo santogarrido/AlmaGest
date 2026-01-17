@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('order_line_id')->references('id')->on('order_lines');
             $table->date('issue_date');
             $table->tinyInteger('deleted')->default(0);
+            $table->timestamps();
         });
     }
 

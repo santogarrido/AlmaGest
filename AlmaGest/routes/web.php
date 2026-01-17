@@ -12,6 +12,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PdfController;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,3 +121,18 @@ Route::get('/datesCompany', [UserController::class, 'getCompany'])
 Route::get('/formEmail', [UserController::class, 'getIsContactUsers'])
     ->middleware('auth')
     ->name('formEmail');
+
+
+
+
+//Pdf
+
+Route::post('/pdf/company', [PdfController::class, 'company'])->name('pdf.company');
+Route::post('/pdf/catalog', [PdfController::class, 'catalog'])->name('pdf.catalog');
+
+Route::post('/send-email', [PdfController::class, 'sendEmail'])->name('email.send');
+
+
+
+
+

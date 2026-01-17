@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="formEmail-container">
+
     <div class="formEmail-card">
         <h2 class="formEmail-title">{{ __('Email Form') }}</h2>
 
@@ -16,7 +17,8 @@
         @endif
 
 
-        <form action="" method="POST">
+        <form action="{{ route('email.send') }}" method="POST">
+            @csrf
 
             @foreach($users as $user)
                 <div>
@@ -26,12 +28,12 @@
                 </div>
                 <br>
             @endforeach
-            
+
             <div>
                 <div>
-                    <a href="" class="btn-welcome btn-register btn-back">
+                    <button type="submit" class="btn-welcome btn-register btn-back">
                         Enviar PDFs
-                    </a>
+                    </button>
                 </div>
                 <br>
                 <div>
@@ -44,3 +46,4 @@
 
     </div>
 </div>
+@endsection

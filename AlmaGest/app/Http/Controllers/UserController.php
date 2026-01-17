@@ -40,7 +40,7 @@ class UserController extends Controller
         $user = Auth::user();
         $company = $user->company;
         $userIsContact = \App\Models\User::where('iscontact', 1)
-        ->where('company_id', $user->company)->first();
+        ->where('company_id', $user->company->id)->first();
 
         $contactName = $userIsContact
         ? $userIsContact->firstname . ' ' . $userIsContact->secondname

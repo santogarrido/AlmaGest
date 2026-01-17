@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('order_line_num',10);
             $table->date('issue_date');
             $table->tinyInteger('deleted')->default(0);
+            $table->timestamps();
         });
     }
 

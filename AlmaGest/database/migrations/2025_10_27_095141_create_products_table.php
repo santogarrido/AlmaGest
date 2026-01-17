@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
 
             $table->float('price');
-            $table->integer('sotck');
+            $table->integer('stock');
             $table->string('color_name',20);
             $table->float('weight');
             $table->string('size',10);
@@ -29,6 +29,7 @@ return new class extends Migration
             //FK
             $table->foreign('family_id')->references('id')->on('families');
             $table->tinyInteger('deleted')->default(0);
+            $table->timestamps();
         });
     }
 
