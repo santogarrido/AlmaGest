@@ -19,11 +19,11 @@ class ProductFactory extends Factory
         return [
             'article_id' => \App\Models\Article::all()->random()->id,
             'company_id' => \App\Models\Company::all()->random()->id,
-            'price' => $this->faker->numberBetween(20,150),
-            'stock' => $this->faker->numberBetween(10,100),
-            'size' => $this->faker->numberBetween(10,40),
+            'price' => $this->faker->numberBetween(5,15),
+            'stock' => $this->faker->numberBetween(1,100),
+            'size' => $this->faker->numberBetween(1,15),
             'color_name' => fake()->colorName(),
-            'weight' => $this->faker->numberBetween(10,40),
+            'weight' => $this->faker->numberBetween(1,20),
             'family_id' => \App\Models\Family::all()->random()->id,
         ];
     }
