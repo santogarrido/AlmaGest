@@ -21,7 +21,7 @@
         <td colspan="4" class="title">Ficha empresa</td>
         <td class="center title">
             <strong>Código</strong><br>
-            {{ $data['id'] ?? '' }}
+            {{ $company->id ?? '' }}
         </td>
     </tr>
 
@@ -31,27 +31,27 @@
             <strong>LOGOTIPO</strong>
         </td>
         <td><strong>Nombre</strong></td>
-        <td colspan="3">{{ $data['name'] ?? '' }}</td>
+        <td colspan="3">{{ $company->name ?? '' }}</td>
     </tr>
 
     {{-- DIRECCIÓN --}}
     <tr>
         <td><strong>Dirección</strong></td>
-        <td colspan="3">{{ $data['address'] ?? '' }}</td>
+        <td colspan="3">{{ $company->address ?? '' }}</td>
     </tr>
 
     {{-- POBLACIÓN + CIF --}}
     <tr>
         <td><strong>Población</strong></td>
-        <td>{{ $data['city'] ?? '' }}</td>
+        <td>{{ $company->city ?? '' }}</td>
         <td><strong>CIF/NIF</strong></td>
-        <td>{{ $data['cif'] ?? '' }}</td>
+        <td>{{ $company->cif ?? '' }}</td>
     </tr>
 
     {{-- CONTACTO + CARGO --}}
     <tr>
         <td><strong>Persona de contacto</strong></td>
-        <td>{{ $contactName }}</td>
+        <td>{{ $contactName ?? '' }}</td>
         <td><strong>Cargo</strong></td>
         <td>Gerente</td>
     </tr>
@@ -59,9 +59,9 @@
     {{-- EMAIL + TELÉFONO --}}
     <tr>
         <td><strong>Correo electrónico</strong></td>
-        <td>{{ $data['email'] ?? '' }}</td>
+        <td>{{ $company->email ?? '' }}</td>
         <td><strong>Teléfono</strong></td>
-        <td>{{ $data['phone'] ?? '' }}</td>
+        <td>{{ $company->phone ?? '' }}</td>
     </tr>
 
     {{-- PARTE INFERIOR --}}

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="dataCompany-container">
+
     <div class="dataCompany-card">
         <h2 class="dataCompany-title">{{ __('Enterprise data') }}</h2>
 
@@ -15,12 +16,13 @@
             </div>
         @endif
 
+
         <form method="POST" action="" >
             @csrf
 
             {{-- Codigo --}}
             <div class="form-group">
-                <input type="int" id="id" name="id" class="form-control" value="{{ old('id', $company->id) }}">
+                <input type="int" readonly id="id" name="id" class="form-control" value="{{ old('id', $company->id) }}">
                 <label for="codigo">Codigo</label>
             </div>
 
@@ -52,7 +54,7 @@
 
             {{-- User isContact --}}
             <div class="form-group">
-                <input type="text" id="isContact" name="isContact" class="form-control" value="{{ old('isContact', $userIsContact) }}">
+                <input type="text" readonly id="isContact" name="isContact" class="form-control" value="{{ old('isContact', $userIsContact) }}">
                 <label for="isContact">Persona de contacto</label>
             </div>
 
@@ -160,9 +162,11 @@
                     </div>
                     <br>
                     <div>
-                        <button class="btn-register">
-                            {{ __('Enviar PDFs por Email') }}
-                        </button>
+                        <a href="{{ route('formEmail') }}" class="btn-welcome btn-register btn-back">
+                            Enviar PDFs por Email
+                        </a>
+
+
                     </div>
                 </div>
                 <br>

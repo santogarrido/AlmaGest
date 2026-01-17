@@ -118,7 +118,21 @@ Route::get('/datesCompany', [UserController::class, 'getCompany'])
     ->middleware('auth')
     ->name('datesCompany');
 
-    //Pdf
+Route::get('/formEmail', [UserController::class, 'getIsContactUsers'])
+    ->middleware('auth')
+    ->name('formEmail');
+
+
+
+
+//Pdf
 
 Route::post('/pdf/company', [PdfController::class, 'company'])->name('pdf.company');
 Route::post('/pdf/catalog', [PdfController::class, 'catalog'])->name('pdf.catalog');
+
+Route::post('/send-email', [PdfController::class, 'sendEmail'])->name('email.send');
+
+
+
+
+

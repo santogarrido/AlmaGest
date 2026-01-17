@@ -22,6 +22,16 @@ class UserController extends Controller
 
 
     /**
+     * Get all the users that have isContact in true
+     */
+
+    public function getIsContactUsers(){
+        $users = \App\Models\User::where('iscontact', 1)->get();
+
+        return view('formEmail', compact('users'));
+    }
+
+    /**
      * Get the company of the user
      */
 
@@ -30,7 +40,7 @@ class UserController extends Controller
         $user = Auth::user();
         $company = $user->company;
         $userIsContact = \App\Models\User::where('iscontact', 1)
-        ->where('company_id', $user->company)->first();
+        ->where('company_id', $user->company->id)->first();
 
         $contactName = $userIsContact
         ? $userIsContact->firstname . ' ' . $userIsContact->secondname
