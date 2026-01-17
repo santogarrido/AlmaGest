@@ -28,9 +28,8 @@
     {{-- LOGO + NOMBRE --}}
     <tr>
         <td rowspan="5" class="logo">
-    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="max-width:90px; height:auto; display:block; margin:auto;">
-
-</td>
+            <img src="{{ public_path('images/logo.png') }}" alt="Logo" style="max-width:90px; height:auto; display:block; margin:auto;">
+        </td>
         <td><strong>Nombre</strong></td>
         <td colspan="3">{{ $data['name'] ?? '' }}</td>
     </tr>
